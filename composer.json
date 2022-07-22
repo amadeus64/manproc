@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "amadeus64\\manproc\\": "src/"
+            "Amadeus64\\Manproc\\": "src/"
         }
     }
 }
