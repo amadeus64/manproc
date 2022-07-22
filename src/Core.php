@@ -12,8 +12,9 @@
 
 	Class Core
 	{		
-		protected $_store = [];
-		protected $_host   = [];
+		protected $_store 		= [];
+		protected $_host   		= [];
+		protected $_tasklist	= [];	
 
 		public function __construct()
 		{	
