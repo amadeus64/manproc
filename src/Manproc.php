@@ -8,31 +8,16 @@
 	* @author   	Amadeus <nicu.plesa@gmail.com>
 	*/
 
-	namespace amadeuspm;
+	namespace amadeus64;
 
 	Class Manproc
 	{		
 		protected $_store = [];
 		protected $_host   = [];
 
-		public function __construct( $name = NULL, $path = NULL, $type = NULL)
+		public function __construct()
 		{	
-			if(!is_null($name)) {
-				$this->_name = $name;
-			}
-			if(!is_null($path)) {
-				$this->_path = $path;
-			}
-			if(!is_null($type)) {
-				$this->_type = $type;
-			}
 
-			if(is_null($name) && is_null($path) && is_null($type)) {
-				return $this->_host;
-			}
-			else {
-				
-			}	
 		}
 		public function getPID() {
 			return $this->_pid;
