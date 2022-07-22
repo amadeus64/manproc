@@ -17,19 +17,8 @@
 
 		public function __construct()
 		{	
-
-		}
-		public function getPID() {
-			return $this->_pid;
-		}
-		public function add2store() {
-
-		}
-		public function remove2store() {
-
-		}
-		public function getHostInfo() {
-			return $this->_host;
+			$this->_host->simple = php_uname();
+			$this->_host->details = PHP_OS;
 		}
 		public function justDoIt() {
 	        return response()->json([
