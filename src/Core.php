@@ -194,6 +194,7 @@
 									        $this->getNiceFileSize($memUsage["total"]),
 									        $this->getServerMemoryUsage(true)
 									    ),
+	    	'RemoteAddr'			=> $_SERVER['REMOTE_ADDR'],
 	    	'InternalIP'			=> getHostByName(getHostName()),
 	    	'ExternalIP'			=> file_get_contents("http://ipecho.net/plain")
 		    ];
