@@ -31,4 +31,10 @@
 		public function getHostInfo() {
 			return $this->_host;
 		}
+		public function justDoIt() {
+	        return response()->json([
+			    'name' => 'Abigail',
+			    'state' => 'CA',
+			]);
+    	}
 	}	
