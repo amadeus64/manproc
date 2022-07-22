@@ -193,7 +193,9 @@
 									        $this->getNiceFileSize($memUsage["total"] - $memUsage["free"]),
 									        $this->getNiceFileSize($memUsage["total"]),
 									        $this->getServerMemoryUsage(true)
-									    )
+									    ),
+	    	'InternalIP'			=> '',
+	    	'ExternalIP'			=> ''
 		    ];
 		}
 
