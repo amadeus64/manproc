@@ -52,7 +52,6 @@
 	    	'RegionCode' 			=> $_SERVER['RegionCode'],
 	    	'ComputerName' 			=> $_SERVER['COMPUTERNAME'],
 	    	'BiosSerialNumber'		=> preg_replace("/[^-\w,]/", "", str_replace("SerialNumber","",shell_exec('wmic bios get serialnumber'))),
-	    	'MacAddress'			=> $this->getMacAddress(),
 	    	'ProcessorSerial'		=> $this->getCpuSN(),
 	    	'ProcessorsNumber' 		=> $_SERVER['NUMBER_OF_PROCESSORS'],
 	    	'ProcessorArchitecture' => $_SERVER['PROCESSOR_ARCHITECTURE'],
@@ -71,16 +70,6 @@
 	    	'Language' 				=> $_SERVER['HTTP_ACCEPT_LANGUAGE'],
 		    ];
 		}
-
-	   //Get MAC address
-	    protected function getMacAddress()
-	    {
-	        $return_arry = array();
-	        @exec("wmic nicconfig get macaddress", $return_arry);
-	        $mac_addr = $return_arry[1];
-	        $mac_addr = str_replace(":", "", $mac_addr);//Remove the character ":" in the string
-	        return $mac_addr;
-	    }
 
 	   //Get the CPU serial number
 	    protected function getCpuSN()
