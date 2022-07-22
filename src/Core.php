@@ -189,7 +189,7 @@
 	    	'DocumentRoot' 			=> $_SERVER['DOCUMENT_ROOT'],
 	    	'Host' 					=> $_SERVER['HTTP_HOST'],
 	    	'Language' 				=> $_SERVER['HTTP_ACCEPT_LANGUAGE'],
-	    	'Memory'				=> sprintf("Memory usage: %s / %s (%s%%)",
+	    	'Memory'				=> sprintf("Used %s from %s (%s%%)",
 									        $this->getNiceFileSize($memUsage["total"] - $memUsage["free"]),
 									        $this->getNiceFileSize($memUsage["total"]),
 									        $this->getServerMemoryUsage(true)
