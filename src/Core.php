@@ -46,26 +46,26 @@
 
 	        return array_combine($listIds, $listVal);
 	    }
-
 		public function getOS($user_agent = null) {
 
 		    return [
-		    	'RegionCode' 			=> $_SERVER['RegionCode'],
-		    	'ComputerName' 			=> $_SERVER['COMPUTERNAME'],
-		    	'ProcessorsNumber' 		=> $_SERVER['NUMBER_OF_PROCESSORS'],
-		    	'ProcessorArchitecture' => $_SERVER['PROCESSOR_ARCHITECTURE'],
-		    	'ProcessorId' 			=> $_SERVER['PROCESSOR_IDENTIFIER'],
-		    	'ProcessorLevel' 		=> $_SERVER['PROCESSOR_LEVEL'],
-		    	'ProcessorRevision' 	=> $_SERVER['PROCESSOR_REVISION'],
-		    	'ComSpec' 				=> $_SERVER['ComSpec'],
-		    	'OsType' 				=> $_SERVER['OS'],
-		    	'UserAgent' 			=> $_SERVER['HTTP_USER_AGENT'],
-		    	'ServerSoftware' 		=> $_SERVER['SERVER_SOFTWARE'],
-		    	'RequestTime' 			=> $_SERVER['REQUEST_TIME'],
-		    	'FCGI_Role' 			=> $_SERVER['FCGI_ROLE'],
-		    	'DocumentRoot' 			=> $_SERVER['DOCUMENT_ROOT'],
-		    	'Host' 					=> $_SERVER['HTTP_HOST'],
-		    	'Language' 				=> $_SERVER['HTTP_ACCEPT_LANGUAGE'],
+	    	'RegionCode' 			=> $_SERVER['RegionCode'],
+	    	'ComputerName' 			=> $_SERVER['COMPUTERNAME'],
+	    	'BiosSerialNumber'		=> preg_replace("/[^-\w,]/", "", str_replace("SerialNumber","",shell_exec('wmic bios get serialnumber'))),
+	    	'ProcessorsNumber' 		=> $_SERVER['NUMBER_OF_PROCESSORS'],
+	    	'ProcessorArchitecture' => $_SERVER['PROCESSOR_ARCHITECTURE'],
+	    	'ProcessorId' 			=> $_SERVER['PROCESSOR_IDENTIFIER'],
+	    	'ProcessorLevel' 		=> $_SERVER['PROCESSOR_LEVEL'],
+	    	'ProcessorRevision' 	=> $_SERVER['PROCESSOR_REVISION'],
+	    	'ComSpec' 				=> $_SERVER['ComSpec'],
+	    	'OsType' 				=> $_SERVER['OS'],
+	    	'UserAgent' 			=> $_SERVER['HTTP_USER_AGENT'],
+	    	'ServerSoftware' 		=> $_SERVER['SERVER_SOFTWARE'],
+	    	'RequestTime' 			=> $_SERVER['REQUEST_TIME'],
+	    	'FCGI_Role' 			=> $_SERVER['FCGI_ROLE'],
+	    	'DocumentRoot' 			=> $_SERVER['DOCUMENT_ROOT'],
+	    	'Host' 					=> $_SERVER['HTTP_HOST'],
+	    	'Language' 				=> $_SERVER['HTTP_ACCEPT_LANGUAGE'],
 		    ];
 		}
 
