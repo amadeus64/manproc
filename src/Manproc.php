@@ -8,7 +8,7 @@
 	* @author   	Amadeus <nicu.plesa@gmail.com>
 	*/
 
-	namespace amadeus64;
+	namespace amadeus64\Manproc;
 
 	Class Manproc
 	{		
