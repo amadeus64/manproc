@@ -8,7 +8,7 @@
 	* @author   	Amadeus <nicu.plesa@gmail.com>
 	*/
 
-	namespace Amadeus64\Core;
+	namespace Amadeus64\Manproc;
 
 	Class Core
 	{		
