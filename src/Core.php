@@ -167,6 +167,17 @@
 
 	        return array_combine($listIds, $listVal);
 	    }
+	    protected function getInternalIP() {
+	    	$sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+			socket_connect($sock, "8.8.8.8", 53);
+			socket_getsockname($sock, $name); // $name passed by reference
+
+			// This is the local machine's external IP address
+			return $name;
+	    }
+	    protected function getExternalIP() {
+	    	
+	    }
 		public function getOS($user_agent = null) {
 			$memUsage = $this->getServerMemoryUsage(false);
 		    return [
@@ -194,8 +205,8 @@
 									        $this->getNiceFileSize($memUsage["total"]),
 									        $this->getServerMemoryUsage(true)
 									    ),
-	    	'InternalIP'			=> '',
-	    	'ExternalIP'			=> ''
+	    	'InternalIP'			=> getHostByName(getHostName()),
+	    	'ExternalIP'			=> file_get_contents("http://ipecho.net/plain")
 		    ];
 		}
 
