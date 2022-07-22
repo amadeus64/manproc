@@ -48,7 +48,7 @@
 	    }
 
 		public function getOS($user_agent = null) {
-		    return json_encode($_SERVER);
+		    return json_decode(json_encode($_SERVER));
 		}
 
 		public function justDoIt() {
