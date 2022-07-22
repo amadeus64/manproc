@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'nplesa\\manproc\\' => array($baseDir . '/src'),
+    'amadeus64\\manproc\\' => array($baseDir . '/src'),
 );

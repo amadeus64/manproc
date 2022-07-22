@@ -9,12 +9,12 @@ class ComposerStaticInitdd461267a53f98cd6e08ff414d58bfb3
     public static $prefixLengthsPsr4 = array (
         'n' => 
         array (
-            'nplesa\\manproc\\' => 15,
+            'amadeus64\\manproc\\' => 15,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'nplesa\\manproc\\' => 
+        'amadeus64\\manproc\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
