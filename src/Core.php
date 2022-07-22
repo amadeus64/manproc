@@ -22,7 +22,25 @@
 				'long'  => php_uname(),
 				'short' => PHP_OS,
 				'full'	  => (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ?  $this->getOS() : $this->getOSInformation()	
-			];	
+			];
+			$this->_tasklist = $this->getAllTasks();	
+		}
+		protected function getWinTasks() {
+			exec("tasklist 2 > NUL", $task_list);
+			return json_decode (json_encode ($task_list), FALSE);			
+		}
+		protected function getLinuxTasks() {
+			
+		}
+		protected function killWinTaskByPID($pid) {
+
+		}
+		protected function killWinTaskByTaskname($taskname) {
+			exec("taskkill /F /IM taskName.exe 2>NUL", $result);
+			return $result;
+		}
+		protected function getAllTasks() {
+			return (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ?  $this->getWinTasks() : $this->getLinuxTasks();
 		}
 		protected function getOSInformation()
 	    {
