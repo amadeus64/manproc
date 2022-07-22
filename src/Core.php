@@ -17,8 +17,11 @@
 
 		public function __construct()
 		{	
-			$this->_host->simple = php_uname();
-			$this->_host->details = PHP_OS;
+
+			$this->_host = [
+				'simple'  => php_uname(),
+				'details' => PHP_OS
+			];	
 		}
 		public function justDoIt() {
 	        return response()->json([
