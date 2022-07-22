@@ -46,6 +46,4 @@
 		public function getHostInfo() {
 			return $this->_host;
 		}
-			}
-
 	}	
