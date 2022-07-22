@@ -12,7 +12,7 @@
 
 	Class Core
 	{		
-		protected $_store 		= [];
+		protected $_manage 		= [];
 		protected $_host   		= [];
 		protected $_tasklist	= [];	
 
@@ -27,7 +27,7 @@
 		}
 		protected function getWinTasks() {
 			exec("tasklist 2 > NUL", $task_list);
-			return json_decode (json_encode ($task_list), FALSE);			
+			return $task_list;			
 		}
 		protected function getLinuxTasks() {
 			
@@ -40,7 +40,13 @@
 			return $result;
 		}
 		protected function getAllTasks() {
-			return (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ?  $this->getWinTasks() : $this->getLinuxTasks();
+			if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+				$result = $this->getWinTasks();
+			}
+			else {
+				$result = $this->getLinuxTasks();
+			}
+			return  $result;
 		}
 		protected function getOSInformation()
 	    {
