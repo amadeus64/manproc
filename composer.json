@@ -1,5 +1,5 @@
 {
-    "name": "nplesa/manproc",
+    "name": "amadeus64/manproc",
     "type": "library",
     "description": "Simple process manager" ,
     "keywords": [ "pm" , "process manager" ] ,
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "nplesa\\manproc\\": "src/"
+            "amadeus64\\manproc\\": "src/"
         }
     }
 }
