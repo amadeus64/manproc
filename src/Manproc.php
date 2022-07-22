@@ -10,7 +10,7 @@
 
 	namespace amadeuspm;
 
-	Class Process
+	Class Manproc
 	{		
 		protected $_store = [];
 		protected $_host   = [];
