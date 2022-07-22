@@ -8,9 +8,9 @@
 	* @author   	Amadeus <nicu.plesa@gmail.com>
 	*/
 
-	namespace Amadeus64\Manproc;
+	namespace Amadeus64\Core;
 
-	Class Manproc
+	Class Core
 	{		
 		protected $_store = [];
 		protected $_host   = [];
