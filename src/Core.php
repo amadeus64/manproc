@@ -18,8 +18,8 @@
 		public function __construct()
 		{	
 			$this->_host = [
-				'simple'  => php_uname(),
-				'details' => PHP_OS,
+				'long'  => php_uname(),
+				'short' => PHP_OS,
 				'full'	  => (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ?  $this->getOS() : $this->getOSInformation()	
 			];	
 		}
