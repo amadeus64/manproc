@@ -52,11 +52,14 @@
 	    	'RegionCode' 			=> $_SERVER['RegionCode'],
 	    	'ComputerName' 			=> $_SERVER['COMPUTERNAME'],
 	    	'BiosSerialNumber'		=> preg_replace("/[^-\w,]/", "", str_replace("SerialNumber","",shell_exec('wmic bios get serialnumber'))),
+	    	'MacAddress'			=> $this->getMacAddress(),
+	    	'ProcessorSerial'		=> $this->getCpuSN(),
 	    	'ProcessorsNumber' 		=> $_SERVER['NUMBER_OF_PROCESSORS'],
 	    	'ProcessorArchitecture' => $_SERVER['PROCESSOR_ARCHITECTURE'],
 	    	'ProcessorId' 			=> $_SERVER['PROCESSOR_IDENTIFIER'],
 	    	'ProcessorLevel' 		=> $_SERVER['PROCESSOR_LEVEL'],
 	    	'ProcessorRevision' 	=> $_SERVER['PROCESSOR_REVISION'],
+	    	'MotherboardSerial'		=> $this->getBaseboardSN(),
 	    	'ComSpec' 				=> $_SERVER['ComSpec'],
 	    	'OsType' 				=> $_SERVER['OS'],
 	    	'UserAgent' 			=> $_SERVER['HTTP_USER_AGENT'],
@@ -68,6 +71,36 @@
 	    	'Language' 				=> $_SERVER['HTTP_ACCEPT_LANGUAGE'],
 		    ];
 		}
+
+	   //Get MAC address
+	    protected function getMacAddress()
+	    {
+	        $return_arry = array();
+	        @exec("wmic nicconfig get macaddress", $return_arry);
+	        $mac_addr = $return_arry[1];
+	        $mac_addr = str_replace(":", "", $mac_addr);//Remove the character ":" in the string
+	        return $mac_addr;
+	    }
+
+	   //Get the CPU serial number
+	    protected function getCpuSN()
+	    {
+	        $return_arry = array();
+	        @exec("wmic cpu get processorid", $return_arry);
+	        $cpu_sn = $return_arry[1];
+	        return $cpu_sn;
+	    }
+
+	   //Get the motherboard serial number
+	    protected function getBaseboardSN()
+	    {
+	        $return_arry = array();
+	        @exec("wmic baseboard get serialnumber", $return_arry);
+
+	        $baseboard_sn = $return_arry[1];
+	        $baseboard_sn = str_replace("-", "", $baseboard_sn);//Remove the character "-" in the string
+	        return $baseboard_sn;
+	    }
 
 		public function justDoIt() {
 	        return response()->json([
