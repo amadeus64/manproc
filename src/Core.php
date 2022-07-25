@@ -227,7 +227,7 @@
 
 	        return array_combine($listIds, $listVal);
 	    }
-		public function getOS($user_agent = null) {
+		protected function getOS($user_agent = null) {
 			$memUsage = $this->getServerMemoryUsage(false);
 		    return [
 	    	'RegionCode' 			=> $_SERVER['RegionCode'],
