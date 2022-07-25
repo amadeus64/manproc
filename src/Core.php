@@ -87,8 +87,8 @@
 		}
 		protected function getWinTasks() {
 			exec("tasklist 2>NUL", $task_list);
-			$list = $this->buildTasksList($task_list);
-			return $list;				
+			// $list = $this->buildTasksList($task_list);
+			return $task_list;				
 		}
 		protected function getLinuxTasks() {
 		}
