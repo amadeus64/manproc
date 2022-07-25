@@ -27,7 +27,7 @@
 		}
 		protected function buildTasksList($p) {
 			$result = [];
-			for($i = 0; count($p) ; $i++) {
+			for($i = 0; count($p) - 1; $i++) {
 				if($p[$i] !== "") {
 					array_push($result, $p[$i]);
 				}
