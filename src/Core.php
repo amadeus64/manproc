@@ -24,7 +24,7 @@
 
 		public function __construct()
 		{	
-			$this->_sid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+			$this->_id = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
 			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager '.$this->_id.' was created.');
 			$this->_host = [
 				'long'  => php_uname(),
