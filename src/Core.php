@@ -12,6 +12,7 @@
 
 	Class Core
 	{		
+		protected $_started 	= false;
 		protected $_managed 	= ["auto", "manual"];
 		protected $_host   		= [];
 		protected $_tasklist	= [];	
@@ -23,7 +24,12 @@
 				'short' => PHP_OS,
 				'full'	  => (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ?  $this->getOS() : $this->getOSInformation()	
 			];
-			$this->_tasklist = $this->getAllTasks();	
+			if($this->_started) {
+				$this->_tasklist = $this->getAllTasks();	
+			}
+			else {
+				$this->_tasklist = [];	
+			}
 		}
 		protected function buildTasksList($p) {
 			$result = [];
