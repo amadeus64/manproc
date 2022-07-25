@@ -12,7 +12,7 @@
 
 	Class Core
 	{		
-		protected $_manage 		= [];
+		protected $_managed 	= ["auto", "manual"];
 		protected $_host   		= [];
 		protected $_tasklist	= [];	
 
