@@ -31,7 +31,7 @@
 				$this->_tasklist = [];	
 			}
 		}
-		protected function started() {
+		protected function start() {
 			$this->_started = true;
 		}
 		protected function stop() {
