@@ -54,7 +54,7 @@
 				$this->_managed = $manage;
 			}
 			else {
-				throw ValidationException::withMessages(['_managed' => 'Invalid value']);
+				return 'Invalid value';
 			}
 		}
 		public function getManaged() {
