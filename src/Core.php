@@ -240,10 +240,6 @@
             for($i = 0; $i < count($output); $i++) {
             	if((strlen($output[$i]) > 0) && ($output[$i] !== 'IPAddress')) {
             		$tmp = explode(', ',str_replace('{"', '', str_replace('"}', '', $output[$i])));
-            		// array_push($result , [
-            		// 	'IPAddress' => $tmp[0],
-            		// 	'MAC'		=> $tmp[1]
-            		// ]);
             		array_push($result , $output[$i]);
             	}
             }
