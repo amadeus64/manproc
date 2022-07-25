@@ -25,9 +25,22 @@
 			];
 			$this->_tasklist = $this->getAllTasks();	
 		}
+		protected function buildTasksList($p) {
+			$result = [];
+			for($i = 0; count($p); $i++) {
+				if($p[$i] !== "") {
+					array_push($result, $p[$i]);
+				}
+			}
+			return [
+				"total" 	=> count($p) - 1,
+				"processes"	=> $result
+			]
+		}
 		protected function getWinTasks() {
 			exec("tasklist 2>NUL", $task_list);
-			return $task_list;				
+			$list = $this->buildTasksList($task_list);
+			return $list;				
 		}
 		protected function getLinuxTasks() {
 			
