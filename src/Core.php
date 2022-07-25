@@ -14,6 +14,7 @@
 
 	Class Core
 	{		
+		protected $_sid 			= 0;
 		protected $_log         	= [];
 		protected $_managedOptions  = ["auto","manual"];
 		protected $_started 		= false;
@@ -23,6 +24,7 @@
 
 		public function __construct()
 		{	
+			$this->_sid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
 			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager was created.');
 			$this->_host = [
 				'long'  => php_uname(),
@@ -284,10 +286,10 @@
 	        return $baseboard_sn;
 	    }
 
-		public function justDoIt() {
+		public function about() {
 	        return response()->json([
-			    'name' => 'Abigail',
-			    'state' => 'CA',
+			    'name' => 'Core Manager',
+			    'version' => '1.0'
 			]);
     	}
 	}	
