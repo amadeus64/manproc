@@ -14,7 +14,7 @@
 	{		
 		protected $_id 				= 0;
 		protected $_log         	= [];
-		protected $_managedOptions  = ["auto","manual"];
+		protected $_managedTypes  	= ["auto","manual"];
 		protected $_ManagedTasks 	= [];
 		protected $_nonManagedTasks = [];
 		protected $_started 		= false;
@@ -22,8 +22,7 @@
 		protected $_host   			= [];
 		protected $_tasklist		= [];	
 
-		public function __construct()
-		{	
+		public function __construct() {	
 			$this->_id = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
 			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager '.$this->_id.' was created.');
 			$this->_host = [
@@ -58,7 +57,7 @@
 		}
 		public function setManaged($manage) {
 			array_push($this->_log, date('Y-m-d H:i:s', time()). ' Core Manager '.$this->_id.' try to change manage type.');
-			if(in_array($manage, $this->_managedOptions)) {
+			if(in_array($manage, $this->_managedTypes)) {
 				$this->_managed = $manage;
 				$text = 'Core manager type has been set on '.$manage;
 				array_push($this->_log, date('Y-m-d H:i:s', time()). ' Core Manager '.$this->_id.' , manage type changed to '.$manage);
@@ -92,7 +91,6 @@
 			return $list;				
 		}
 		protected function getLinuxTasks() {
-			
 		}
 	    protected function killPid($pid) {
 	        if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
@@ -112,8 +110,7 @@
 			}
 			return  $result;
 		}
-	    public function getServerMemoryUsage($getPercentage=true)
-	    {
+	    public function getServerMemoryUsage($getPercentage=true) {
 	        $memoryTotal = null;
 	        $memoryFree = null;
 
@@ -204,8 +201,7 @@
 	            return @round($bytes/pow(1000,($i=floor(log($bytes,1000)))),2) .' '. (isset($unit[$i]) ? $unit[$i] : 'B');
 	        }
 	    }
-		protected function getOSInformation()
-	    {
+		protected function getOSInformation() {
 	        if (false == function_exists("shell_exec") || false == is_readable("/etc/os-release")) {
 	            return null;
 	        }
@@ -261,17 +257,13 @@
 	    	'ExternalIP'			=> file_get_contents("http://ipecho.net/plain")
 		    ];
 		}
-	   //Get the CPU serial number
-	    protected function getCpuSN()
-	    {
+	    protected function getCpuSN() {
 	        $return_arry = array();
 	        @exec("wmic cpu get processorid", $return_arry);
 	        $cpu_sn = $return_arry[1];
 	        return $cpu_sn;
 	    }
-	   //Get the motherboard serial number
-	    protected function getBaseboardSN()
-	    {
+	    protected function getBaseboardSN() {
 	        $return_arry = array();
 	        @exec("wmic baseboard get serialnumber", $return_arry);
 
@@ -287,9 +279,7 @@
 			];
     	}
     	public function addTask($name, $path) {
-    		
     	}
     	public function addManagedTask($name, $path) {
-    		
     	}
 	}	
