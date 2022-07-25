@@ -287,9 +287,10 @@
 	    }
 
 		public function about() {
-	        return response()->json([
-			    'name' => 'Core Manager',
-			    'version' => '1.0'
-			]);
+	        return [
+			    'name' 		=> 'Core Manager',
+			    'version' 	=> '1.0',
+			    'author'  	=> 'Amadeus64'
+			];
     	}
 	}	
