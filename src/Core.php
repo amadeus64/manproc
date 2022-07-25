@@ -26,8 +26,8 @@
 			$this->_tasklist = $this->getAllTasks();	
 		}
 		protected function getWinTasks() {
-			exec("tasklist 2 > NUL", $task_list);
-			return $task_list;			
+			exec("tasklist 2>NUL", $task_list);
+			return $task_list;				
 		}
 		protected function getLinuxTasks() {
 			
