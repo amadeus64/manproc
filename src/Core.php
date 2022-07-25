@@ -55,7 +55,7 @@
 			return $result;			
 		}
 		public function setManaged($manage) {
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Try to change manage type.')
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Try to change manage type.');
 			if(in_array($manage, $this->_managedOptions)) {
 				$this->_managed = $manage;
 				$text = 'Core manager type has been set on '.$manage;
