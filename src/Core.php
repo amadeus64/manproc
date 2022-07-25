@@ -33,9 +33,11 @@
 		}
 		public function start() {
 			$this->_started = true;
+			$this->_tasklist = $this->getAllTasks();
 		}
 		public function stop() {
 			$this->_started = false;
+			$this->_tasklist = [];
 		}
 		public function getStatus() {
 			$result = "Core Manager is stopped";
