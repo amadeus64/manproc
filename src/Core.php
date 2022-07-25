@@ -52,7 +52,7 @@
 			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager '.$this->_id.' give me status.');
 			$result = "Core Manager is stopped";
 			if($this->_started) {
-				$result = "Core Manager is started with pid ".getmypid();
+				$result = "Core Manager '.$this->_id.' is started with pid ".getmypid();
 			} 
 			return $result;			
 		}
