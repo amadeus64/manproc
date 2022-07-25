@@ -14,6 +14,7 @@
 
 	Class Core
 	{		
+		protected $_log         	= [];
 		protected $_managedOptions  = ["auto","manual"];
 		protected $_started 		= false;
 		protected $_managed			= "auto";
@@ -22,6 +23,7 @@
 
 		public function __construct()
 		{	
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager was created.');
 			$this->_host = [
 				'long'  => php_uname(),
 				'short' => PHP_OS,
@@ -36,13 +38,16 @@
 		}
 		public function start() {
 			$this->_started = true;
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core is started.');
 			$this->_tasklist = $this->getAllTasks();
 		}
 		public function stop() {
 			$this->_started = false;
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core is stopped.');
 			$this->_tasklist = [];
 		}
 		public function getStatus() {
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core give me status.');
 			$result = "Core Manager is stopped";
 			if($this->_started) {
 				$result = "Core Manager is started with pid ".getmypid();
@@ -50,9 +55,11 @@
 			return $result;			
 		}
 		public function setManaged($manage) {
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Try to change manage type.')
 			if(in_array($manage, $this->_managedOptions)) {
 				$this->_managed = $manage;
 				$text = 'Core manager type has been set on '.$manage;
+				array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Manage type changed to '.$manage);
 			}
 			else {
 				$text = 'Invalid value';
@@ -61,6 +68,9 @@
 		}
 		public function getManaged() {
 			return $this->_managed;	
+		}
+		public function getLog() {
+			return $this->_log;	
 		}
 		protected function buildTasksList($p) {
 			$result = [];
