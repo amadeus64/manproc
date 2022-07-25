@@ -45,13 +45,15 @@
 		protected function getLinuxTasks() {
 			
 		}
-		// protected function killWinTaskByPID($pid) {
-
-		// }
-		// protected function killWinTaskByTaskname($taskname) {
-		// 	exec("taskkill /F /IM taskName.exe 2>NUL", $result);
-		// 	return $result;
-		// }
+	    protected function killPid($pid) {
+	        if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+	            $result = shell_exec('C:\\WINDOWS\\system32\\cmd.exe /c 2>&1 taskkill /PID '.$pid.' /F');
+	        }
+	        else {
+	            $result = shell_exec("kill -9 ".$pid);
+	        }
+	        return $result;
+	    }
 		protected function getAllTasks() {
 			if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 				$result = $this->getWinTasks();
