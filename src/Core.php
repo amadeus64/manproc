@@ -63,7 +63,10 @@
 				array_push($this->_log, date('Y-m-d H:i:s', time()). ' Core Manager '.$this->_id.' , manage type changed to '.$manage);
 			}
 			else {
+				array_push($this->_log, date('Y-m-d H:i:s', time()). ' Core Manager cannot start, invalid value for manage type');
 				$text = 'Invalid value';
+				$this->_id = 0;
+				$this->_started = false;
 			}
 			return $text;
 		}
