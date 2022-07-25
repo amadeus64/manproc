@@ -18,7 +18,7 @@
 		protected $_ManagedTasks 	= [];
 		protected $_nonManagedTasks = [];
 		protected $_started 		= false;
-		protected $_managed			= "auto";
+		protected $_managed			= "manual";
 		protected $_host   			= [];
 		protected $_tasklist		= [];	
 
