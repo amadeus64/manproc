@@ -52,10 +52,12 @@
 		public function setManaged($manage) {
 			if(in_array($manage, $this->_managedOptions)) {
 				$this->_managed = $manage;
+				$text = 'Core manager type has been set on '.$manage;
 			}
 			else {
-				return 'Invalid value';
+				$text = 'Invalid value';
 			}
+			return $text;
 		}
 		public function getManaged() {
 			return $this->_managed;	
