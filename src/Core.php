@@ -15,7 +15,8 @@
 		protected $_id 				= 0;
 		protected $_log         	= [];
 		protected $_managedOptions  = ["auto","manual"];
-		protected $_managedTasks 	= [];
+		protected $_ManagedTasks 	= [];
+		protected $_nonManagedTasks = [];
 		protected $_started 		= false;
 		protected $_managed			= "auto";
 		protected $_host   			= [];
