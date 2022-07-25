@@ -31,13 +31,13 @@
 				$this->_tasklist = [];	
 			}
 		}
-		protected function start() {
+		public function start() {
 			$this->_started = true;
 		}
-		protected function stop() {
+		public function stop() {
 			$this->_started = false;
 		}
-		protected function getStatus() {
+		public function getStatus() {
 			$result = "Core Manager is stopped";
 			if($this->_started) {
 				$result = "Core Manager is started with pid ".getmypid();
