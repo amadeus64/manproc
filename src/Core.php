@@ -50,7 +50,7 @@
 			return $result;			
 		}
 		public function setManaged($manage) {
-			if(in_array($this->_managedOptions, $manage)) {
+			if(in_array($manage, $this->_managedOptions)) {
 				$this->_managed = $manage;
 			}
 			else {
