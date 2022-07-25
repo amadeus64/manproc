@@ -231,7 +231,7 @@
 		protected function getOS($user_agent = null) {
 			$memUsage = $this->getServerMemoryUsage(false);
 			$internalIP = [];
-			array_push(getHostByName(getHostName()), $internalIP);
+			array_push($internalIP, getHostByName(getHostName()));
 		    return [
 	    	'RegionCode' 			=> $_SERVER['RegionCode'],
 	    	'ComputerName' 			=> $_SERVER['COMPUTERNAME'],
