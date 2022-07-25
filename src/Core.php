@@ -10,12 +10,15 @@
 
 	namespace Amadeus64\Manproc;
 
+	use Illuminate\Validation\ValidationException;
+
 	Class Core
 	{		
-		protected $_started 	= false;
-		protected $_managed 	= ["auto", "manual"];
-		protected $_host   		= [];
-		protected $_tasklist	= [];	
+		protected $_managedOptions  = ["auto","manual"];
+		protected $_started 		= false;
+		protected $_managed			= "auto";
+		protected $_host   			= [];
+		protected $_tasklist		= [];	
 
 		public function __construct()
 		{	
@@ -45,6 +48,17 @@
 				$result = "Core Manager is started with pid ".getmypid();
 			} 
 			return $result;			
+		}
+		public function setManaged($manage) {
+			if(in_array($this->_managedOptions, $manage)) {
+				$this->_managed = $manage;
+			}
+			else {
+				throw ValidationException::withMessages(['_managed' => 'Invalid value']);
+			}
+		}
+		public function getManaged() {
+			return $this->_managed;	
 		}
 		protected function buildTasksList($p) {
 			$result = [];
