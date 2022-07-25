@@ -61,11 +61,13 @@
 				$this->_managed = $manage;
 				$text = 'Core manager type has been set on '.$manage;
 				array_push($this->_log, date('Y-m-d H:i:s', time()). ' Core Manager '.$this->_id.' , manage type changed to '.$manage);
+				if(!$this->_started) {
+					$this->_started = true;
+				}
 			}
 			else {
 				array_push($this->_log, date('Y-m-d H:i:s', time()). ' Core Manager cannot start, invalid value for manage type');
 				$text = 'Invalid value';
-				$this->_id = 0;
 				$this->_started = false;
 			}
 			return $text;
@@ -228,6 +230,8 @@
 	    }
 		protected function getOS($user_agent = null) {
 			$memUsage = $this->getServerMemoryUsage(false);
+			$internalIP = [];
+			array_push(getHostByName(getHostName()), $internalIP);
 		    return [
 	    	'RegionCode' 			=> $_SERVER['RegionCode'],
 	    	'ComputerName' 			=> $_SERVER['COMPUTERNAME'],
@@ -256,7 +260,7 @@
 									        $this->getServerMemoryUsage(true)
 									    ),
 	    	'RemoteAddr'			=> $_SERVER['REMOTE_ADDR'],
-	    	'InternalIP'			=> getHostByName(getHostName()),
+	    	'InternalIP'			=> $internalIP,
 	    	'ExternalIP'			=> file_get_contents("http://ipecho.net/plain")
 		    ];
 		}
