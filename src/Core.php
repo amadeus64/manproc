@@ -14,7 +14,7 @@
 
 	Class Core
 	{		
-		protected $_sid 			= 0;
+		protected $_id 				= 0;
 		protected $_log         	= [];
 		protected $_managedOptions  = ["auto","manual"];
 		protected $_started 		= false;
@@ -25,7 +25,7 @@
 		public function __construct()
 		{	
 			$this->_sid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager was created.');
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager '.$this->_id.' was created.');
 			$this->_host = [
 				'long'  => php_uname(),
 				'short' => PHP_OS,
@@ -40,16 +40,16 @@
 		}
 		public function start() {
 			$this->_started = true;
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager is started.');
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager '.$this->_id.' is started.');
 			$this->_tasklist = $this->getAllTasks();
 		}
 		public function stop() {
 			$this->_started = false;
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager is stopped.');
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager '.$this->_id.' is stopped.');
 			$this->_tasklist = [];
 		}
 		public function getStatus() {
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager give me status.');
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager '.$this->_id.' give me status.');
 			$result = "Core Manager is stopped";
 			if($this->_started) {
 				$result = "Core Manager is started with pid ".getmypid();
@@ -57,11 +57,11 @@
 			return $result;			
 		}
 		public function setManaged($manage) {
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Try to change manage type.');
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' Core Manager '.$this->_id.' try to change manage type.');
 			if(in_array($manage, $this->_managedOptions)) {
 				$this->_managed = $manage;
 				$text = 'Core manager type has been set on '.$manage;
-				array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Manage type changed to '.$manage);
+				array_push($this->_log, date('Y-m-d H:i:s', time()). ' Core Manager '.$this->_id.' , manage type changed to '.$manage);
 			}
 			else {
 				$text = 'Invalid value';
