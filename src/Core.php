@@ -31,6 +31,19 @@
 				$this->_tasklist = [];	
 			}
 		}
+		protected function started() {
+			$this->_started = true;
+		}
+		protected function stop() {
+			$this->_started = false;
+		}
+		protected function getStatus() {
+			$result = "Core Manager is stopped";
+			if($this->_started) {
+				$result = "Core Manager is started with pid ".getmypid();
+			} 
+			return $result;			
+		}
 		protected function buildTasksList($p) {
 			$result = [];
 			for($i = 0; $i < count($p) - 1; $i++) {
