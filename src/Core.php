@@ -228,13 +228,32 @@
 
 	        return array_combine($listIds, $listVal);
 	    }
+	    protected function getWindowsUser() {
+            $cmd = "wmic ComputerSystem get UserName";
+            @exec($cmd, $output);
+            return $output[1];
+	    }    
+		protected function getAllActiveIPs() {
+            $result = [];
+            $cmd = "wmic NICCONFIG get IPAddress";
+            @exec($cmd, $output);
+            for($i = 0; $i < count($output); $i++) {
+            	if((strlen($output[$i]) > 0) && ($output[$i] !== 'IPAddress')) {
+            		$tmp = explode(', ',str_replace('{"', '', str_replace('"}', '', $output[$i])));
+            		array_push($result , [
+            			'IPAddress' => $tmp[0],
+            			'MAC'		=> $tmp[1]
+            		]);
+            	}
+            }
+            return $result;
+	    }
 		protected function getOS($user_agent = null) {
 			$memUsage = $this->getServerMemoryUsage(false);
-			$internalIP = [];
-			array_push($internalIP, getHostByName(getHostName()));
 		    return [
 	    	'RegionCode' 			=> $_SERVER['RegionCode'],
 	    	'ComputerName' 			=> $_SERVER['COMPUTERNAME'],
+	    	'ComputerUser'			=> $this->getWindowsUser(),
 	    	'BiosSerialNumber'		=> preg_replace("/[^-\w,]/", "", str_replace("SerialNumber","",shell_exec('wmic bios get serialnumber'))),
 	    	'ProcessorSerial'		=> $this->getCpuSN(),
 	    	'ProcessorsNumber' 		=> $_SERVER['NUMBER_OF_PROCESSORS'],
@@ -260,7 +279,7 @@
 									        $this->getServerMemoryUsage(true)
 									    ),
 	    	'RemoteAddr'			=> $_SERVER['REMOTE_ADDR'],
-	    	'InternalIP'			=> $internalIP,
+	    	'InternalIP'			=> $this->getAllActiveIPs(),
 	    	'ExternalIP'			=> file_get_contents("http://ipecho.net/plain")
 		    ];
 		}
