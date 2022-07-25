@@ -38,16 +38,16 @@
 		}
 		public function start() {
 			$this->_started = true;
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core is started.');
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager is started.');
 			$this->_tasklist = $this->getAllTasks();
 		}
 		public function stop() {
 			$this->_started = false;
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core is stopped.');
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager is stopped.');
 			$this->_tasklist = [];
 		}
 		public function getStatus() {
-			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core give me status.');
+			array_push($this->_log, date('Y-m-d H:i:s', time()). ' -> Core Manager give me status.');
 			$result = "Core Manager is stopped";
 			if($this->_started) {
 				$result = "Core Manager is started with pid ".getmypid();
