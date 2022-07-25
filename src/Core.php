@@ -160,10 +160,6 @@
 	                    foreach ($stats as $statLine) {
 	                        $statLineData = explode(":", trim($statLine));
 
-	                        //
-	                        // Extract size (TODO: It seems that (at least) the two values for total and free memory have the unit "kB" always. Is this correct?
-	                        //
-
 	                        // Total memory
 	                        if (count($statLineData) == 2 && trim($statLineData[0]) == "MemTotal") {
 	                            $memoryTotal = trim($statLineData[1]);
