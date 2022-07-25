@@ -264,7 +264,6 @@
 	    	'ExternalIP'			=> file_get_contents("http://ipecho.net/plain")
 		    ];
 		}
-
 	   //Get the CPU serial number
 	    protected function getCpuSN()
 	    {
@@ -273,7 +272,6 @@
 	        $cpu_sn = $return_arry[1];
 	        return $cpu_sn;
 	    }
-
 	   //Get the motherboard serial number
 	    protected function getBaseboardSN()
 	    {
@@ -284,12 +282,17 @@
 	        $baseboard_sn = str_replace("-", "", $baseboard_sn);//Remove the character "-" in the string
 	        return $baseboard_sn;
 	    }
-
 		public function about() {
 	        return [
 			    'name' 		=> 'Core Manager',
 			    'version' 	=> '1.0',
 			    'author'  	=> 'Amadeus64'
 			];
+    	}
+    	public function addTask($name, $path) {
+    		
+    	}
+    	public function addManagedTask($name, $path) {
+    		
     	}
 	}	
